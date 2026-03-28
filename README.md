@@ -68,7 +68,7 @@ npm run dev -- --host
 cd mobile
 npx expo start --tunnel
 ```
-***‼️ Scan the Expo Go Qr code from terminal with your mobile camera to add the application in Expo Go***
+***‼️ Scan the Expo Go Qr code from terminal with your mobile camera to add the application in Expo Go.***
 
 ### 4. How to Connect
 1. Open the PC UI URL (e.g localhost server)
