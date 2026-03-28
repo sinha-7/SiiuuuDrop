@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "SiiuuuDrop",
+    "slug": "swiftdrop",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#080810"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "SiiuuuDrop needs access to your photo library to share photos and videos with your PC.",
+        "NSPhotoLibraryAddUsageDescription": "SiiuuuDrop needs access to save photos."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#080810"
+      },
+      "permissions": ["READ_EXTERNAL_STORAGE", "READ_MEDIA_IMAGES", "READ_MEDIA_VIDEO"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "SiiuuuDrop needs access to your photo library to share photos and videos with your PC.",
+          "savePhotosPermission": "Allow SiiuuuDrop to save photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
+  }
+}
