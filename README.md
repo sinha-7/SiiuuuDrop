@@ -86,6 +86,3 @@ npx expo start --tunnel
 - **Expo SDK 54 Compat**: Uses `expo-file-system/legacy` for stable File I/O on modern iOS versions.
 
 ---
-
-## 📄 License
-MIT © 2026 SiiuuuDrop Team
