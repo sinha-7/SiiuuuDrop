@@ -1,4 +1,4 @@
-# ⚡ SiiuuuDrop
+# ⚡ SiiuuuDrop (Open Source)
 
 SiiuuuDrop is a high-performance **Mobile-to-PC Gallery Browser** and media streamer. It allows you to instantly browse your entire iPhone photo library from any PC browser on the same network and download thousands of files in a single, memory-optimized batch ZIP.
 
