@@ -71,10 +71,10 @@ npx expo start --tunnel
 ***Scan the Expo Go qr code from terminal with your mobile camera to add the application in Expo Go***
 
 ### 4. How to Connect
-1. Open the PC UI URL shown in Tab 2 (e.g., `http://localhost:5173/gallery`).
+1. Open the PC UI URL (e.g localhost server)
 2. Note the **6-digit Session Code** at the top.
 3. Open the **SiiuuuDrop** app on your iPhone via Expo Go.
-4. Enter your **PC's Local IP** (shown in Tab 2 network address) and the **Session Code**.
+4. Enter your **PC's Local IP** and the **Session Code**.
 5. Hit **Connect & Share Gallery**.
 6. **Enjoy!** Browse on PC and download your memories.
 
