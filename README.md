@@ -29,7 +29,7 @@ SiiuuuDrop is a high-performance **Mobile-to-PC Gallery Browser** and media stre
 
 ### 1. Prerequisites
 - **Node.js** installed on your PC.
-- **Expo Go** app installed on your iPhone (App Store).
+- **Expo Go** app installed on your iPhone (App Store). 
 - PC and iPhone must be on the **same WiFi network**.
 
 ### 2. Installation
@@ -68,6 +68,7 @@ npm run dev -- --host
 cd mobile
 npx expo start --tunnel
 ```
+***Scan the Expo Go qr code from terminal with your mobile camera to add the application in Expo Go***
 
 ### 4. How to Connect
 1. Open the PC UI URL shown in Tab 2 (e.g., `http://localhost:5173/gallery`).
