@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+dist/
+.env
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+.idea/
+.next/
+out/
+build/
+.cache/
+package-lock.json
+*.local

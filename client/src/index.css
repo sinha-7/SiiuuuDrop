@@ -1,0 +1,792 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #080810;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a14; }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a4a; }
+
+.hidden { display: none; }
+
+/* ══════════════════════════════════════════
+   GALLERY LAYOUT — Desktop PC browser
+   ══════════════════════════════════════════ */
+
+.gallery-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #080810;
+}
+
+/* ── Sidebar ── */
+
+.gallery-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: #0c0c18;
+  border-right: 1px solid #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.sidebar-device {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.sidebar-device-icon {
+  position: relative;
+}
+
+.sidebar-device-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #0c0c18;
+}
+
+.sidebar-device-dot.online { background: #00e676; }
+.sidebar-device-dot.offline { background: #ff5252; }
+
+.sidebar-device-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-device-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sidebar-device-status {
+  font-size: 11px;
+  color: #888;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: #1a1a2e;
+  margin: 12px 0;
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 8px;
+}
+
+.sidebar-nav-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 0.1em;
+  padding: 8px 12px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: #aaa;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-nav-item:hover { background: #1a1a2e; color: #fff; }
+.sidebar-nav-item.active { background: #00e5ff12; color: #00e5ff; }
+
+.sidebar-nav-text { flex: 1; }
+
+.sidebar-nav-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  background: #1a1a2e;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.sidebar-nav-item.active .sidebar-nav-count { color: #00e5ff; background: #00e5ff15; }
+.sidebar-spacer { flex: 1; }
+
+.sidebar-disconnect {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.sidebar-disconnect:hover { color: #ff5252; }
+
+/* ── Main area ── */
+
+.gallery-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #1a1a2e;
+  flex-shrink: 0;
+}
+
+.gallery-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-brand-text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.gallery-session-badge {
+  background: #00e5ff12;
+  color: #00e5ff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+.gallery-connection-status {
+  font-size: 13px;
+}
+
+.status-connected {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #00e676;
+}
+
+.status-waiting {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff9800;
+}
+
+/* ── Toolbar ── */
+
+.gallery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid #1a1a2e;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  background: #12121e;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.toolbar-btn:hover { border-color: #00e5ff80; color: #fff; }
+
+.toolbar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #12121e;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  color: #888;
+  min-width: 200px;
+}
+
+.toolbar-search input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 13px;
+  width: 100%;
+}
+
+.toolbar-search input::placeholder { color: #555; }
+
+.toolbar-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #888;
+}
+
+.toolbar-sort select {
+  background: #12121e;
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  color: #ccc;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.toolbar-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: #00e5ff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.3);
+}
+
+.toolbar-download-btn:hover { background: #00c8e0; }
+.toolbar-download-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+/* ── Gallery Grid ── */
+
+.gallery-grid-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+.gallery-date-group { margin-bottom: 24px; }
+
+.gallery-date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  border-bottom: 1px solid #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.gallery-date-count {
+  font-weight: 400;
+  font-size: 12px;
+  color: #555;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  background: #12121e;
+}
+
+.gallery-item:hover { border-color: #00e5ff40; }
+.gallery-item.selected { border-color: #00e5ff; background: #00e5ff08; }
+
+.gallery-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+}
+
+.gallery-video-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0,0,0,0.7);
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-check {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  opacity: 0;
+}
+
+.gallery-item:hover .gallery-check,
+.gallery-item.selected .gallery-check { opacity: 1; }
+
+.gallery-check.checked {
+  background: #00e5ff;
+  border-color: #00e5ff;
+  color: #000;
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 8px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+.gallery-item-name {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gallery-item-size {
+  display: block;
+  font-size: 9px;
+  color: #aaa;
+}
+
+/* ── Gallery Empty State ── */
+
+.gallery-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #555;
+}
+
+.gallery-empty-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.gallery-empty h3 {
+  font-size: 24px;
+  color: #888;
+  margin: 0 0 8px;
+}
+
+.gallery-empty p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.gallery-empty-hint {
+  font-size: 12px;
+  color: #444;
+  margin-top: 16px;
+}
+
+.gallery-grid-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+  padding: 60px;
+}
+
+/* ── Download Bar ── */
+
+.download-bar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 240px);
+  background: #0e0e1a;
+  border-top: 1px solid #1a1a2e;
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.download-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.download-bar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.download-bar-badge {
+  background: #00e5ff;
+  color: #000;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.download-bar-clear {
+  background: none;
+  border: none;
+  color: #00e5ff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.download-bar-list {
+  padding: 8px 20px;
+}
+
+.download-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.download-item:last-child { border-bottom: none; }
+
+.download-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.download-item-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.download-item-size { color: #666; }
+
+.download-item-bar {
+  height: 3px;
+  background: #1a1a2e;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.download-item-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff, #00b8d4);
+  border-radius: 2px;
+  transition: width 0.2s;
+}
+
+/* ══════════════════════════════════════════
+   PHONE PAGE — Mobile UI
+   ══════════════════════════════════════════ */
+
+.phone-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #080810;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.phone-brand { font-weight: 700; }
+
+.phone-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.phone-status-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 16px;
+  border: 1px solid #1a1a2e;
+  background: #0c0c18;
+}
+
+.phone-status-card.connected { border-color: #00e67630; }
+.phone-status-card.waiting { border-color: #1a1a2e; }
+
+.phone-status-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 12px 0 4px;
+}
+
+.phone-status-card p {
+  font-size: 13px;
+  color: #888;
+}
+
+.phone-session-code {
+  font-family: 'Space Mono', monospace;
+  color: #00e5ff;
+}
+
+.phone-share-prompt {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 32px 20px;
+  border-radius: 16px;
+  background: #0c0c18;
+  border: 2px dashed #00e5ff30;
+}
+
+.phone-share-icon-wrap {
+  margin-bottom: 16px;
+}
+
+.phone-share-prompt h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.phone-share-prompt p {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 20px;
+}
+
+.phone-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: #00e5ff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+  transition: all 0.15s;
+}
+
+.phone-share-btn:active { transform: scale(0.97); }
+
+.phone-progress-card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #0c0c18;
+  border: 1px solid #1a1a2e;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.phone-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #1a1a2e;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.phone-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff, #00b8d4);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.phone-stats-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 16px;
+  background: #0c0c18;
+  border: 1px solid #00e5ff20;
+}
+
+.phone-stats-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: #00e5ff;
+  line-height: 1;
+}
+
+.phone-stats-label {
+  font-size: 13px;
+  color: #888;
+  margin: 8px 0 20px;
+}
+
+.phone-add-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: #1a1a2e;
+  color: #00e5ff;
+  border: 1px solid #00e5ff30;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.phone-add-more-btn:active { transform: scale(0.97); }
+
+.phone-upload-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: #0c0c18;
+  border: 1px solid #1a1a2e;
+}
+
+.phone-upload-card h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #00e5ff;
+}
+
+.phone-upload-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #aaa;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.phone-upload-item:last-child { border-bottom: none; }
+
+.phone-disconnect-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  margin-top: auto;
+  background: none;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.phone-disconnect-btn:hover { border-color: #ff5252; color: #ff5252; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gallery-sidebar { display: none; }
+  .download-bar { width: 100%; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+}
