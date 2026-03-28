@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"name": "SiiuuuDrop (Root)",
+			"path": "."
+		},
+		{
+			"name": "PC Client (Vite)",
+			"path": "client"
+		},
+		{
+			"name": "Mobile App (Expo)",
+			"path": "mobile"
+		},
+		{
+			"name": "Relay Server (Node)",
+			"path": "server"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/node_modules": true,
+			"**/.expo": true
+		},
+		"editor.formatOnSave": true
+	}
+}
